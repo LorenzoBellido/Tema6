@@ -1,123 +1,119 @@
 package electrodomesticos;
 
 public class Electrodomestico {
-
-	protected enum Color {
-		BLANCO, NEGRO, ROJO, AZUL, GRIS
-	}
-
-	protected enum Consumo {
+	enum Energia {
 		A, B, C, D, E, F
 	}
 
-	protected double precioBase = 100;
+	enum Colores {
+		blanco, negro, rojo, azul, gris
+	}
 
-	protected double peso = 5;
-
-	protected String color = "BLANCO";
-
-	protected char consumo = 'F';
+	protected float precioBase;
+	protected Colores color = Colores.blanco;
+	protected Energia eficienciaEnergetica = Energia.F;
+	protected float peso = 5;
 
 	public Electrodomestico() {
+
+	}
+
+	public Electrodomestico(float precioBase, String color, char eficienciaEnergetica, float peso) {
 		super();
-	}
-
-	public Electrodomestico(double precioBase, double peso) {
 		if (precioBase > 0) {
 			this.precioBase = precioBase;
 		}
+		comprobarConsumoEnergetico(eficienciaEnergetica);
+		comprobarColor(color);
 		if (peso > 0) {
 			this.peso = peso;
 		}
 	}
 
-	public Electrodomestico(double precioBase, double peso, String color, char consumo) {
-		if (precioBase > 0) {
-			this.precioBase = precioBase;
-		}
-		if (peso > 0) {
-			this.peso = peso;
-		}
-		if (color.equals(Color.valueOf(color))) {
-			this.color = color;
-		}
-		if (consumo == (Consumo.valueOf(consumo))) {
-			this.consumo = consumo;
-		}
-	}
-
-	public double getPrecioBase() {
+	public float getPrecioBase() {
 		return precioBase;
 	}
 
-	public double getPeso() {
-		return peso;
+	public void setPrecioBase(float precioBase) {
+		if (precioBase > 0) {
+			this.precioBase = precioBase;
+		}
 	}
 
-	public String getColor() {
+	public Colores getColor() {
 		return color;
 	}
 
-	public char getConsumo() {
-		return consumo;
+	public void setColor(String color) {
+		comprobarColor(color);
 	}
 
-	private boolean comprobarConsumoEnergetico(char letra) {
-		boolean comprobar = false;
+	public Energia getEficienciaEnergetica() {
+		return eficienciaEnergetica;
+	}
 
-		if (consumo == (Consumo.valueOf(consumo))) {
-			comprobar = true;
-		} else {
-			this.consumo = 'F';
+	public void setEficienciaEnergetica(char eficienciaEnergetica) {
+		comprobarConsumoEnergetico(eficienciaEnergetica);
+	}
+
+	public float getPeso() {
+		return peso;
+	}
+
+	public void setPeso(float peso) {
+		if (peso > 0) {
+			this.peso = peso;
 		}
-
-		return comprobar;
 	}
 
-	private boolean comprobarColor(String color) {
-		boolean comprobar = false;
-
-		if (color.equals(Color.valueOf(color))) {
-			comprobar = true;
+	private void comprobarConsumoEnergetico(char letra) {
+		if (letra == 'A' || letra == 'B' || letra == 'C' || letra == 'D' || letra == 'E' || letra == 'F') {
+			this.eficienciaEnergetica = Energia.valueOf(String.valueOf(letra));
 		} else {
-			this.color = "BLANCO";
+			this.eficienciaEnergetica = Energia.F;
 		}
-
-		return comprobar;
 	}
 
-	protected void precioFinal() {
-		char consumo = this.consumo;
-		double peso = this.peso;
+	private void comprobarColor(String color) {
+		if (color.equals("rojo") || color.equals("blanco") || color.equals("azul") || color.equals("gris")
+				|| color.equals("negro")) {
+			this.color = Colores.valueOf(color);
+		} else {
+			this.color = Colores.blanco;
+		}
+	}
 
-		switch (consumo) {
-		case 'A' -> {
+	public void precioFinal() {
+		switch (this.eficienciaEnergetica) {
+		case A:
 			this.precioBase += 100;
-		}
-		case 'B' -> {
+			break;
+		case B:
 			this.precioBase += 80;
-		}
-		case 'C' -> {
+			break;
+		case C:
 			this.precioBase += 60;
-		}
-		case 'D' -> {
-			this.precioBase += 40;
-		}
-		case 'E' -> {
-			this.precioBase += 20;
-		}
-		case 'F' -> {
-			this.precioBase += 10;
-		}
-		}
-		
-		if(peso >= 0 && peso <= 19) {
-			this.precioBase += 10;
-		}else if(peso >= 20 && peso <= 49) {
+			break;
+		case D:
 			this.precioBase += 50;
-		}else if(peso >= 50 && peso <= 79) {
+			break;
+		case E:
+			this.precioBase += 30;
+			break;
+		case F:
+			this.precioBase += 10;
+			break;
+		default:
+			break;
+		}
+
+		if (this.peso < 20) {
+			this.precioBase += 10;
+		} else if (this.peso < 50) {
+			this.precioBase += 50;
+		} else if (this.peso < 80) {
 			this.precioBase += 80;
-		}else if(peso >= 80) {
+		} else {
 			this.precioBase += 100;
 		}
 	}

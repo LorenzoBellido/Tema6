@@ -1,33 +1,28 @@
 package electrodomesticos;
 
 public class Television extends Electrodomestico {
-
-	private double resolucion = 20;
-
+	private float resolucion = 20;
 	private boolean sintonizador = false;
 
 	public Television() {
+
 	}
 
-	public Television(double precioBase, double peso) {
-		super(precioBase, peso);
-	}
-
-	public Television(double resolucion, boolean sintonizador) {
-		this.resolucion = resolucion;
-		this.sintonizador = sintonizador;
-	}
-
-	public Television(double precioBase, double peso, String color, char consumo, double resolucion,
+	public Television(float precioBase, String color, char eficienciaEnergetica, float peso, float resolucion,
 			boolean sintonizador) {
-		super(precioBase, peso, color, consumo);
+		super(precioBase, color, eficienciaEnergetica, peso);
 		if (resolucion > 0) {
 			this.resolucion = resolucion;
 		}
 		this.sintonizador = sintonizador;
 	}
 
-	public double getResolucion() {
+	public Television(float precioBase, float peso) {
+		setPrecioBase(precioBase);
+		setPeso(peso);
+	}
+
+	public float getResolucion() {
 		return resolucion;
 	}
 
@@ -36,20 +31,13 @@ public class Television extends Electrodomestico {
 	}
 	
 	@Override
-	protected void precioFinal() {
-		double aumento = this.precioBase * 0.30;
-		if(this.resolucion < 40) {
-			this.precioBase = this.precioBase + aumento;
-			super.precioFinal();
-		}else {
-			super.precioFinal();
+	public void precioFinal() {
+		super.precioFinal();
+		if (this.resolucion > 40) {
+			this.precioBase *= 1.3;
 		}
-		if(this.sintonizador) {
+		if (this.sintonizador) {
 			this.precioBase += 50;
-			super.precioFinal();
-		}else {
-			super.precioFinal();
 		}
 	}
-
 }
