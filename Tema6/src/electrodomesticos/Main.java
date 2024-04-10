@@ -9,22 +9,22 @@ public class Main {
 		double sumaT = 0;
 		
 		// Creación de los electrodomesticos
-		Electrodomestico e1 = new Electrodomestico(150, "negro", 'A', 2);
-		Electrodomestico e2 = new Television(100, 15);
-		Electrodomestico e3 = new Television(200, "AZUL", 'B', 20, 24, false);
-		Electrodomestico e4 = new Lavadora(230, 67);
-		Electrodomestico e5 = new Lavadora(175, "", ' ', 5, 12);
-		Electrodomestico e6 = new Electrodomestico();
-		Electrodomestico e7 = new Television();
-		Electrodomestico e8 = new Lavadora();
-		Electrodomestico e9 = new Television(200, " ", ' ', 34, 50, true);
-		Electrodomestico e10 = new Electrodomestico(150, "Verde", 'Z', 2);
+		Poligono e1 = new Poligono(150, "negro", 'A', 2);
+		Poligono e2 = new Television(100, 15);
+		Poligono e3 = new Television(200, "AZUL", 'B', 20, 24, false);
+		Poligono e4 = new Lavadora(230, 67);
+		Poligono e5 = new Lavadora(175, "", ' ', 5, 12);
+		Poligono e6 = new Poligono();
+		Poligono e7 = new Television();
+		Poligono e8 = new Lavadora();
+		Poligono e9 = new Television(200, " ", ' ', 34, 50, true);
+		Poligono e10 = new Poligono(150, "Verde", 'Z', 2);
 		
 		// Guardo los electrodomesticos en un array
-		Electrodomestico elec[] = {e1,e2,e3,e4,e5,e6,e7,e8,e9,e10};
+		Poligono elec[] = {e1,e2,e3,e4,e5,e6,e7,e8,e9,e10};
 		
 		// Imprimo los elementos del array
-		for(Electrodomestico obj : elec) {
+		for(Poligono obj : elec) {
 			System.out.println(obj);
 			System.out.println("------------------- \n");
 		}
@@ -38,7 +38,7 @@ public class Main {
 		// Calculo la suma de los electrodomésticos según su tipo
 		for(int i = 0; i < elec.length; i++) {
 			
-			if(elec[i] instanceof Electrodomestico) {
+			if(elec[i] instanceof Poligono) {
 				sumaE += elec[i].precioBase;
 			}
 			if(elec[i] instanceof Lavadora) {

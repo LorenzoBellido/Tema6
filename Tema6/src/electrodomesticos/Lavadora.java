@@ -4,7 +4,7 @@ package electrodomesticos;
  * La clase Lavadora representa un electrodoméstico de tipo lavadora.
  * Hereda de la clase base Electrodomestico.
 */
-public class Lavadora extends Electrodomestico {
+public class Lavadora extends Poligono {
 	/**
 	 * Atributo carga Carga de la lavadora
 	 */

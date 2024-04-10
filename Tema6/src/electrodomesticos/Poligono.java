@@ -3,7 +3,7 @@ package electrodomesticos;
 /**
  * La clase Electrodomestico representa un electrodoméstico genérico.
  */
-public class Electrodomestico {
+public class Poligono {
 	/**
 	 * Enumerado para la energia del electrodomestico
 	 */
@@ -38,7 +38,7 @@ public class Electrodomestico {
 	/**
 	 * Constructor sin parámetros
 	 */
-	public Electrodomestico() {
+	public Poligono() {
 
 	}
 
@@ -50,7 +50,7 @@ public class Electrodomestico {
 	 * @param eficienciaEnergetica Clasificación de eficiencia energética
 	 * @param peso                 Peso del electrodoméstico
 	 */
-	public Electrodomestico(float precioBase, String color, char eficienciaEnergetica, float peso) {
+	public Poligono(float precioBase, String color, char eficienciaEnergetica, float peso) {
 		super();
 		if (precioBase > 0) {
 			this.precioBase = precioBase;
@@ -233,7 +233,7 @@ public class Electrodomestico {
 	 */
 	@Override
 	public String toString() {
-		String res = "Precio base: " + this.precioBase + "\n" + "Color: " + this.color + "\n" + "Consumo Energético "
+		String res = "-------------" + "\n" + "Precio base: " + this.precioBase + "\n" + "Color: " + this.color + "\n" + "Consumo Energético "
 				+ this.eficiencia + "\n" + "Peso: " + this.peso;
 		return res;
 	}

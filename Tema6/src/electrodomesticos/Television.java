@@ -4,7 +4,7 @@ package electrodomesticos;
  * La clase Television representa un electrodoméstico de tipo televisión.
  * Hereda de la clase base Electrodomestico.
 */
-public class Television extends Electrodomestico {
+public class Television extends Poligono {
 	/**
 	 * Atributo resolucion Tamaño de la pantalla en pulgadas (por defecto: 20).
 	 */

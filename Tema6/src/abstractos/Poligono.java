@@ -20,7 +20,7 @@ public abstract class Poligono {
 	
 	@Override
 	public String toString() {
-		String res = "Numero lados: " + this.numeroLados;
+		String res = "----------" + "\n" + "Numero lados: " + this.numeroLados;
 		return res;
 	}
 }
